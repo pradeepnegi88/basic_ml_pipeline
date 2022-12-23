@@ -1,12 +1,9 @@
 import logging
 import os
-from datetime import datetime
+
+from housing.utilities.util import get_current_time_stamp
 
 LOG_DIR = 'logs'
-
-
-def get_current_time_stamp():
-    return f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
 
 
 def get_log_file_name():
