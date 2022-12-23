@@ -13,7 +13,7 @@
   },
   "data_validation_config": {
     "schema_dir": "config",
-    "schema_file_name": "schema.yaml",
+    "schema_file_name": "schema.json",
     "report_file_name": "report.json",
     "report_page_file_name": "report.html"
   },
@@ -33,7 +33,7 @@
     "model_config_file_name": "model.yaml"
   },
   "model_evaluation_config": {
-    "model_evaluation_file_name": "model_evaluation.yaml"
+    "model_evaluation_file_name": "model_evaluation.json"
   },
   "model_pusher_config": {
     "model_export_dir": "saved_models"
