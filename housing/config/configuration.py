@@ -44,7 +44,7 @@ class Configuration:
             data_ingestion_artifact_dir = get_file_join(
                 artifact_dir,
                 DATA_INGESTION_ARTIFACT_DIR,
-                self.time_stamp
+                self.current_time_stamp
             )
             data_ingestion_info = self.config_info_dict[DATA_INGESTION_CONFIG]
             dataset_download_url = data_ingestion_info[DATASET_DOWNLOAD_URL]
@@ -86,7 +86,7 @@ class Configuration:
             artifact_dir = self.training_pipeline_config.artifact_dir
             data_validation_artifact_dir = get_file_join(artifact_dir, DATA_VALIDATION_ARTIFACT_DIR_NAME,
                                                          self.current_time_stamp)
-            data_validation_config = self.config_info[DATA_VALIDATION_CONFIG_KEY]
+            data_validation_config = self.config_info_dict[DATA_VALIDATION_CONFIG_KEY]
 
             schema_file_path = get_file_join(ROOT_DIR,
                                              data_validation_config[DATA_VALIDATION_SCHEMA_DIR_KEY],
@@ -122,7 +122,7 @@ class Configuration:
                 self.time_stamp
             )
 
-            data_transformation_config_info = self.config_info[DATA_TRANSFORMATION_CONFIG_KEY]
+            data_transformation_config_info = self.config_info_dict[DATA_TRANSFORMATION_CONFIG_KEY]
 
             add_bedroom_per_room = data_transformation_config_info[DATA_TRANSFORMATION_ADD_BEDROOM_PER_ROOM_KEY]
 
@@ -164,9 +164,9 @@ class Configuration:
             model_trainer_artifact_dir = get_file_join(
                 artifact_dir,
                 MODEL_TRAINER_ARTIFACT_DIR,
-                self.time_stamp
+                self.current_time_stamp
             )
-            model_trainer_config_info = self.config_info[MODEL_TRAINER_CONFIG_KEY]
+            model_trainer_config_info = self.config_info_dict[MODEL_TRAINER_CONFIG_KEY]
             trained_model_file_path = get_file_join(model_trainer_artifact_dir,
                                                     model_trainer_config_info[MODEL_TRAINER_TRAINED_MODEL_DIR_KEY],
                                                     model_trainer_config_info[MODEL_TRAINER_TRAINED_MODEL_FILE_NAME_KEY]
@@ -193,12 +193,12 @@ class Configuration:
             artifact_dir = get_file_join(self.training_pipeline_config.artifact_dir,
                                          MODEL_EVALUATION_ARTIFACT_DIR, )
 
-            model_evaluation_config = self.config_info[MODEL_EVALUATION_CONFIG_KEY]
+            model_evaluation_config = self.config_info_dict[MODEL_EVALUATION_CONFIG_KEY]
 
             model_evaluation_file_path = get_file_join(artifact_dir,
                                                        model_evaluation_config[MODEL_EVALUATION_FILE_NAME_KEY])
             response = ModelEvaluationEntity(model_evaluation_file_path=model_evaluation_file_path,
-                                             time_stamp=self.time_stamp)
+                                             time_stamp=self.current_time_stamp)
 
             logging.info(f"Model Evaluation Config: {response}.")
             return response
@@ -208,7 +208,7 @@ class Configuration:
     def get_model_pusher_config(self) -> ModelPusherEntity:
         try:
             time_stamp = f"{datetime.now().strftime('%Y%m%d%H%M%S')}"
-            model_pusher_config_info = self.config_info[MODEL_PUSHER_CONFIG_KEY]
+            model_pusher_config_info = self.config_info_dict[MODEL_PUSHER_CONFIG_KEY]
             export_dir_path = get_file_join(ROOT_DIR, model_pusher_config_info[MODEL_PUSHER_MODEL_EXPORT_DIR_KEY],
                                             time_stamp)
 
