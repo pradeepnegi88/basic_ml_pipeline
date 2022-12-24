@@ -19,7 +19,8 @@
     "total_bedrooms",
     "population",
     "households",
-    "median_income"
+    "median_income",
+    "median_house_value"
   ],
   "categorical_columns": [
     "ocean_proximity"
