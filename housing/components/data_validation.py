@@ -156,7 +156,7 @@ class DataValidation:
                     report_file_path=self.data_validation_config.report_file_path,
                     report_page_file_path=self.data_validation_config.report_page_file_path,
                     is_validated=True,
-                    message="Data Validation performed successully."
+                    message="Data Validation performed successfully."
                 )
                 logging.info(f"Data validation artifact: {data_validation_artifact}")
                 return data_validation_artifact
@@ -168,4 +168,4 @@ class DataValidation:
             raise CustomException(e, sys) from e
 
     def __del__(self):
-        logging.info(f"{'>> ' * 30}Data Valdaition log completed.{'<< ' * 30} \n\n")
+        logging.info(f"{'>> ' * 30}Data Validation log completed.{'<< ' * 30} \n\n")
