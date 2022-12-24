@@ -107,6 +107,8 @@ class Configuration:
                 report_file_path=report_file_path,
                 report_page_file_path=report_page_file_path,
             )
+            logging.info(f"Data Validation config: {data_validation_config}")
+
             return data_validation_config
 
         except Exception as e:
