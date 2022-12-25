@@ -1,3 +1,4 @@
+import shutil
 from datetime import datetime
 import json
 
@@ -42,7 +43,8 @@ def check_dir_exists(dir_path):
 
 
 def remove_dir(dir_path):
-    os.remove(dir_path)
+    pass
+    # os.remove(dir_path)
 
 
 def check_dir_remove_make(dir_path):
