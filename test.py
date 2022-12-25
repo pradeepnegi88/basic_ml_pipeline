@@ -4,6 +4,7 @@ from datetime import datetime
 from housing.components.data_ingestion import DataIngestion
 from housing.components.data_transformation import DataTransformation
 from housing.components.data_validation import DataValidation
+from housing.components.model_evaluation import ModelEvaluation
 from housing.config.configuration import Configuration
 from housing.components.model_trainer import ModelTrainer
 from housing.utilities.util import get_file_join
@@ -27,12 +28,17 @@ c = Configuration()
 print(os.listdir("/"))
 print(os.listdir("/")[0])
 di = DataIngestion(c.get_data_ingestion_config())
-dv = DataValidation(c.get_data_validation_config(), di.initiate_data_ingestion())
+dia = di.initiate_data_ingestion()
+dv = DataValidation(c.get_data_validation_config(), dia)
 # dv.validate_dataset_schema()
 dv.is_data_drift_found()
-dt = DataTransformation(c.get_data_transformation_config(), di.initiate_data_ingestion(), dv.initiate_data_validation())
+dva = dv.initiate_data_validation()
+dt = DataTransformation(c.get_data_transformation_config(), di.initiate_data_ingestion(), dva)
 
 dt.initiate_data_transformation()
 mt = ModelTrainer(c.get_model_trainer_config(), dt.initiate_data_transformation())
 
-mt.initiate_model_trainer()
+mta = mt.initiate_model_trainer()
+
+me = ModelEvaluation(c.get_model_evaluation_config(), dia, dva, mta)
+mea = me.initiate_model_evaluation()
