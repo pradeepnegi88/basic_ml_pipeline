@@ -5,6 +5,7 @@ from housing.components.data_ingestion import DataIngestion
 from housing.components.data_transformation import DataTransformation
 from housing.components.data_validation import DataValidation
 from housing.components.model_evaluation import ModelEvaluation
+from housing.components.model_pusher import ModelPusher
 from housing.config.configuration import Configuration
 from housing.components.model_trainer import ModelTrainer
 from housing.utilities.util import get_file_join
@@ -42,3 +43,5 @@ mta = mt.initiate_model_trainer()
 
 me = ModelEvaluation(c.get_model_evaluation_config(), dia, dva, mta)
 mea = me.initiate_model_evaluation()
+mp = ModelPusher(c.get_model_pusher_config(), mea)
+mpa = mp.initiate_model_pusher()
