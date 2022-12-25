@@ -121,7 +121,7 @@ class Configuration:
             data_transformation_artifact_dir = get_file_join(
                 artifact_dir,
                 DATA_TRANSFORMATION_ARTIFACT_DIR,
-                self.time_stamp
+                self.current_time_stamp
             )
 
             data_transformation_config_info = self.config_info_dict[DATA_TRANSFORMATION_CONFIG_KEY]
