@@ -59,6 +59,10 @@ def get_first_filename_from_directory_list(dir_path):
     return os.listdir(dir_path)[0]
 
 
+def get_filename_from_directory_list(dir_path):
+    return os.listdir(dir_path)
+
+
 def get_dir(dir_path):
     return os.path.dirname(dir_path)
 
@@ -168,3 +172,11 @@ def read_yaml_file(file_path: str) -> dict:
             return yaml.safe_load(yaml_file)
     except Exception as e:
         raise CustomException(e, sys) from e
+
+
+def current_working_directory():
+    return os.getcwd()
+
+
+def get_is_file(file_dir):
+    return os.path.isfile(file_dir)
